@@ -116,12 +116,23 @@ Access the interactive documentation at:
 * **Swagger UI**: `http://127.0.0.1:8000/docs`
 * **Redoc**: `http://127.0.0.1:8000/redoc`
 
-| Method | Endpoint | Description | Access |
-| --- | --- | --- | --- |
-| `POST` | `/auth/login` | Login (Rate Limited) | Public |
-| `GET` | `/courses/` | List Courses (Paginated) | All |
-| `PATCH` | `/courses/{id}` | Update Course | Admin Only |
-| `POST` | `/enrollments/` | Enroll in Course | Student Only |
+| `POST` | `/auth/register` | Register a new student or admin account | Public |
+| `POST` | `/auth/login` | Obtain JWT access token (Rate Limited) | Public |
+| **User Profile** |  |  |  |
+| `GET` | `/users/me` | Retrieve current logged-in user details | Authenticated |
+| **Course Management** |  |  |  |
+| `GET` | `/courses/` | List all courses (Supports `skip`, `limit`, `search`) | Public |
+| `POST` | `/courses/` | Create a new course entry | **Admin Only** |
+| `GET` | `/courses/{id}` | Get detailed information for a specific course | Public |
+| `PATCH` | `/courses/{id}` | Update course details (title, code, capacity) | **Admin Only** |
+| `PATCH` | `/courses/{id}/status` | Toggle course availability (Active/Inactive) | **Admin Only** |
+| **Enrollments** |  |  |  |
+| `POST` | `/enrollments` | Enroll current student in a course | **Student Only** |
+| `DELETE` | `/enrollments/{course_id}` | Drop a course for the current student | **Student Only** |
+| **Admin Operations** |  |  |  |
+| `GET` | `/admin/enrollments` | View all system-wide enrollments | **Admin Only** |
+| `GET` | `/admin/courses/{id}/enrollments` | View students enrolled in a specific course | **Admin Only** |
+| `DELETE` | `/admin/enrollments/{id}` | Force-remove a student from a course | **Admin Only** |
 
 ---
 
