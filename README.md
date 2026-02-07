@@ -116,12 +116,17 @@ Access the interactive documentation at:
 * **Swagger UI**: `http://127.0.0.1:8000/docs`
 * **Redoc**: `http://127.0.0.1:8000/redoc`
 
+###  API Endpoint Reference
+
+| Method | Endpoint | Description | Access |
+| --- | --- | --- | --- |
+| **Authentication** |  |  |  |
 | `POST` | `/auth/register` | Register a new student or admin account | Public |
 | `POST` | `/auth/login` | Obtain JWT access token (Rate Limited) | Public |
 | **User Profile** |  |  |  |
 | `GET` | `/users/me` | Retrieve current logged-in user details | Authenticated |
 | **Course Management** |  |  |  |
-| `GET` | `/courses/` | List all courses (Supports `skip`, `limit`, `search`) | Public |
+| `GET` | `/courses/` | List all courses (Supports skip, limit, search) | Public |
 | `POST` | `/courses/` | Create a new course entry | **Admin Only** |
 | `GET` | `/courses/{id}` | Get detailed information for a specific course | Public |
 | `PATCH` | `/courses/{id}` | Update course details (title, code, capacity) | **Admin Only** |
